@@ -1,0 +1,257 @@
+:root {
+    --WHITE: white;
+    --MAIN_COLOR: #0d2137;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+body {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+
+/* fonts */
+
+.gfs-didot-regular {
+    font-family: "GFS Didot", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
+.poppins-thin {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.poppins-extralight {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.poppins-light {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.poppins-extrabold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.poppins-black {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.poppins-thin-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.poppins-extralight-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+}
+
+.poppins-light-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.poppins-regular-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.poppins-medium-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.poppins-semibold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.poppins-bold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.poppins-extrabold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+}
+
+.poppins-black-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+}
+
+
+.navBar {
+    padding: 0 5vw;
+    height: 5vw;
+    background-color: var(--MAIN_COLOR);
+
+    .eProdLogo {
+        height: 4vw;
+    }
+
+    .addToCardButton {
+        border: none;
+        color: var(--WHITE);
+        cursor: pointer;
+        font-size: 1vw;
+
+        .addTocardimg {
+            filter: invert(100%) brightness(1000%) contrast(100%);
+            width: 2.5vw;
+            color: var(--WHITE);
+        }
+    }
+
+    .addToCardButton:hover {
+        opacity: 0.8;
+    }
+}
+
+.filterbar {
+    width: 20vw;
+    height: 48.7vw;
+    background-color: rgb(24, 72, 114);
+}
+
+/* Dropdown Base */
+.dropdown {
+    cursor: pointer;
+    padding: 15px;
+    /* border-radius: 8px; */
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+/* Closed State */
+.fill-down {
+    display: flex;
+    position: relative;
+    padding-left: 1vw;
+    width: 100%;
+    height: 3vw;
+    align-items: center;
+    background-color: rgb(9, 50, 85);
+    transform: translateY(0);
+    transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.fill-down:hover {
+    background-color: rgb(5, 77, 141);
+}
+
+/* Expanded State */
+.fill-up {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: 1vw;
+    width: 100%;
+    height: 13vw;
+    align-items: flex-start;
+    background-color: rgb(60, 78, 93);
+    transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* Text Styles */
+.categoryBtn {
+    color: white;
+    font-size: 1vw;
+    font-weight: bold;
+}
+
+/* Arrow Styling */
+.downArrow, 
+.upArrow {
+    width: 2vw;
+    filter: invert(100%) brightness(1000%) contrast(100%);
+    position: absolute;
+    left: 15vw;
+    top: 0.7vw;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Show/Hide Arrows Based on State */
+.fill-down .upArrow {
+    display: none;
+}
+
+.fill-down .categoryCheckBox, .fill-down .categoryText{
+    display:none;
+}
+
+.fill-up .categoryCheckBox, .fill-up .categoryText{
+    display:block;
+}
+
+.categoryText{
+    font-size: 1vw;
+    color: white;
+}
+
+.fill-down .downArrow {
+    display: block;
+}
+
+.fill-up .downArrow {
+    display: none;
+}
+
+.fill-up .upArrow {
+    display: block;
+}
