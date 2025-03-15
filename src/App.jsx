@@ -2,16 +2,19 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import NavigationBar from './Components/NavigationBar'
 import Filters from './Components/Filter';
+import ProductList from './Components/ProdectList'
 import Axios from 'axios';
+
+
+
 
 function App() {
 
-  const [category, setCatrgory] = useState([])
-  const [unicCategory, setUnicCategory] = useState([])
+  const [prodectDetails, setprodectDetails] = useState([])
 
   useEffect(() => {
     Axios.get('https://fakestoreapi.com/products').then((response) => {
-      setCatrgory(response.data)
+      setprodectDetails(response.data)
     }
     )
     .catch((error) => console.error("Error fetching data:", error));
@@ -19,16 +22,13 @@ function App() {
   }, []
   )
 
-  for (let index = 0; index < category.length; index++) {
-    console.log(category[index]);
-    
-  }
-
-  const [count, setCount] = useState(0)
   return (
     <>
-      <NavigationBar />
-      <Filters data={category}/>
+      <NavigationBar/>
+      <Filters data={prodectDetails}/>
+      <div className="div20">
+        <ProductList prodectData={prodectDetails}/>
+      </div>
     </>
   )
 }
