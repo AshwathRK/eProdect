@@ -11,6 +11,7 @@ import Axios from 'axios';
 function App() {
 
   const [prodectDetails, setprodectDetails] = useState([])
+  const [filterdCatugory, setFilterdCatugory] = useState([])
 
   useEffect(() => {
     Axios.get('https://fakestoreapi.com/products').then((response) => {
@@ -22,12 +23,27 @@ function App() {
   }, []
   )
 
+  const categoryFilter = (checkedCategory) => {
+    const filtered = checkedCategory
+      .filter((category) => category.isChecked) // Only keep checked categories
+      .flatMap((category) =>
+        productDetails.filter((product) => product.title === category.value)
+
+
+      // need to change this function here is the issue <<<<==================>>>>>>
+      );
+  
+      setFilterdCatugory(filtered);
+  };
+
   return (
     <>
       <NavigationBar/>
-      <Filters data={prodectDetails}/>
-      <div className="div20">
+      <div className='filter-con w-full flex'>
+      <Filters data={prodectDetails} filterFunction={categoryFilter}/>
+      <div className="container">
         <ProductList prodectData={prodectDetails}/>
+      </div>
       </div>
     </>
   )

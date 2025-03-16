@@ -30,13 +30,11 @@ function Filters(probs) {
             }
         });}
 
-    console.log(responceCategory)
+    probs.filterFunction(responceCategory)
 
     return (
         <div className="filterbar">
             <MainFilterComponent drag={drag} data={data} dragFunction={dragFunction} getCheckBoxValue={getCheckBoxValue}/>
-            {/* <MainFilterComponent drag={drag} data={data} dragFunction={dragFunction} getCheckBoxValue={getCheckBoxValue}/> */}
-            
         </div>
     );
 }

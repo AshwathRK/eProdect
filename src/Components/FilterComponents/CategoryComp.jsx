@@ -1,6 +1,6 @@
 function categoryComp(probs) {
     return (
-        <><div>
+        <><div className="d-inline-flex gap-1">
             <h1 className="categoryBtn poppins-bold">{probs.filterType}</h1>
             <img
                 className="downArrow absolute"
