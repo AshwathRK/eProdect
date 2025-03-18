@@ -1,19 +1,30 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MainFilterComponent from "./FilterComponents/MainFilterComponent";
+import  {AppContext}  from "../App";
 
-function Filters(probs) {
+
+function Filters() {
     const [drag, setDrag] = useState("fill-down");
     const [data, setData] = useState([])
     const [responceCategory, setResponceCategory] = useState([])
+
+    const {productDetails} = useContext(AppContext);
 
     function dragFunction() {
         setDrag((prevDrag) => (prevDrag === "fill-down" ? "fill-up" : "fill-down"));
     }
 
+    // useEffect(() => {
+    //     const uniqueValues = [...new Set(productDetails.map(value => (value.category)))]
+    //     setData(uniqueValues)
+    // }, [productDetails])
+
     useEffect(() => {
-        const uniqueValues = [...new Set((probs.data).map(value => (value.category)))]
-        setData(uniqueValues)
-    }, [probs])
+        if (Array.isArray(productDetails) && productDetails.length > 0) {
+            const uniqueValues = [...new Set(productDetails.map(value => value.category))];
+            setData(uniqueValues);
+        }
+    }, [productDetails]);
 
     const getCheckBoxValue = (categoryList, list) => {
         setResponceCategory(prevState => {
@@ -30,7 +41,7 @@ function Filters(probs) {
             }
         });}
 
-    probs.filterFunction(responceCategory)
+    // probs.filterFunction(responceCategory)
 
     return (
         <div className="filterbar">

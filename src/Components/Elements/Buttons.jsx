@@ -1,6 +1,6 @@
 function Buttons(probs){
     return(
-        <button className={probs.className}>{probs.insideText}</button>
+        <button onClick={probs.onClick} type={probs.type} data-toggle={probs.datatoggle} data-target={probs.datatarget} className={probs.className}>{probs.insideText}</button>
     )
 }
     export default Buttons;
