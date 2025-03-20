@@ -18,8 +18,8 @@ function App() {
     const [addToCardPopup, setaddToCardPopup] = useState("modelPopup-down") // based on the add to card click to dispay the popup
 
     const [filteredData, setFilteredData] = useState([])
-
     const [count, setCount] = useState(1)
+
     const [countID, setCountID] = useState({})
 
 
@@ -52,13 +52,13 @@ function App() {
 
     //Callback for the selected category
 
-    const fetchTheSelectedCategory = (object)=>{
-        setFilteredData(
-            productDetails.filter((value) => 
-                object.some((filterValue) => value.name === filterValue.name)
-            )
-        );
-    }
+    // const fetchTheSelectedCategory = (object)=>{
+    //     setFilteredData(
+    //         productDetails.filter((value) => 
+    //             object.some((filterValue) => value.name === filterValue.name)
+    //         )
+    //     );
+    // }
 
     useEffect(()=>{
         console.log(filteredData)
@@ -71,7 +71,8 @@ function App() {
                 <NavigationBar selectedProdectCount={(selectedProdects.length)} onClick={addModelPopup} />
                 <AppContext.Provider value={{ productDetails, setprodectDetails, filteredCategory, setFilteredCategory }}>
                     <div className='filter-con w-full flex'>
-                        <Filters filerfun={fetchTheSelectedCategory}/>
+                        <Filters />
+                        {/* filerfun={fetchTheSelectedCategory} */}
                         <div className="container">
                             <ProductList selectedProdect={getSelectedProdect} />
                         </div>

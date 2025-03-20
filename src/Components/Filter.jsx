@@ -36,7 +36,7 @@ function Filters(props) {
             }
         });}
 
-        props.filerfun(responceCategory)
+        // props.filerfun(responceCategory)
 
     return (
         <div className="filterbar">
