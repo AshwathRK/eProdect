@@ -41,6 +41,7 @@ function Filters(props) {
     return (
         <div className="filterbar">
             <MainFilterComponent drag={drag} data={data} dragFunction={dragFunction} getCheckBoxValue={getCheckBoxValue}/>
+            
         </div>
     );
 }
