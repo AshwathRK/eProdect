@@ -1,5 +1,7 @@
 import Buttons from "./Elements/Buttons";
 import Images from "./Elements/Images";
+import eProdLogo from '/public/eProd logo.png'
+import card from '/public/card.svg'
 
 
 function NavigationBar(props) {
@@ -13,15 +15,14 @@ function NavigationBar(props) {
 
     const cardImages = {
         "className": "addTocardimg px-1",
-        "src": "./src/assets/card.svg",
         "alt": "addToCard"
     }
 
     return (
         <>
             <nav className="navBar flex justify-between items-center">
-                <img src="./src/assets/eProd logo.png" alt="eProd" className="eProdLogo" />
-                <Buttons onClick={props.onClick} className={pageButtons.ClassName} insideText={<><Images src={cardImages.src} alt={cardImages.alt} className={cardImages.className}
+                <img src={eProdLogo} alt="eProd" className="eProdLogo" />
+                <Buttons onClick={props.onClick} className={pageButtons.ClassName} insideText={<><Images src={card} alt={cardImages.alt} className={cardImages.className}
                 />{pageButtons.insideText}</>} />
                 <div className="selectedProCount bg-red-600"><p className="text-white poppins-bold text-xs">{props.selectedProdectCount}</p></div>
             </nav>

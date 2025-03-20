@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import {AppContext} from "../App"
+import imagesStars from "/public/star.png"
 
 const ProductList = (probs) => {
 
@@ -37,7 +38,7 @@ const ProductList = (probs) => {
                             <h6 className="px-5 poppins-regular text-xl prodDesc">{values.description}</h6>
                             <div className="px-5 ratting flex justify-around items-center">
                                 <div className="ratingStar flex justify-around items-center gap-1 bg-green-600">
-                                    <img className="imgStar" src="./src/assets/star.png" alt="" />
+                                    <img className="imgStar" src={imagesStars} alt="stars" />
                                     <h6 className="ratingTest">{values.rating.rate}</h6>
                                 </div>
                                 <h6 className="reviewCount poppins-bold">{values.rating.count} Ratings</h6>
