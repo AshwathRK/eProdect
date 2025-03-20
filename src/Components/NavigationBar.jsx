@@ -23,6 +23,7 @@ function NavigationBar(props) {
                 <img src="src\assets\eProd logo.png" alt="eProd" className="eProdLogo" />
                 <Buttons onClick={props.onClick} className={pageButtons.ClassName} insideText={<><Images src={cardImages.src} alt={cardImages.alt} className={cardImages.className}
                 />{pageButtons.insideText}</>} />
+                <div className="selectedProCount bg-red-600"><p className="text-white poppins-bold text-xs">{props.selectedProdectCount}</p></div>
             </nav>
         </>
     )

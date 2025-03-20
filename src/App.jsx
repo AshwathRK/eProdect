@@ -12,55 +12,75 @@ export const AppContext = createContext()
 
 function App() {
 
-  const [productDetails, setprodectDetails] = useState([])
-  const [filteredCategory, setFilteredCategory] = useState([])
+    const [productDetails, setprodectDetails] = useState([]) // Get data from the API
+    const [filteredCategory, setFilteredCategory] = useState([]) // To get the uniqe category
+    const [selectedProdects, setSelectedProdects] = useState([]) // Store the all selected prodects
+    const [addToCardPopup, setaddToCardPopup] = useState("modelPopup-down") // based on the add to card click to dispay the popup
 
-  const [addToCardPopup, setaddToCardPopup] = useState("modelPopup-down")
+    const [filteredData, setFilteredData] = useState([])
 
-  const addModelPopup=()=>{
-    setaddToCardPopup((prevDrag) => (prevDrag === "modelPopup-down" ? "modelPopup-open" : "modelPopup-down"));
-  }
+    const [count, setCount] = useState(1)
+    const [countID, setCountID] = useState({})
 
-  useEffect(() => {
-    Axios.get('https://fakestoreapi.com/products').then((response) => {
-      setprodectDetails(response.data)
+
+    //CallBack for the model popup open and close
+    const addModelPopup = () => {
+        setaddToCardPopup((prevDrag) => (prevDrag === "modelPopup-down" ? "modelPopup-open" : "modelPopup-down"));
     }
+
+
+    //To fetching the all data from the API
+    useEffect(() => {
+        Axios.get('https://fakestoreapi.com/products').then((response) => {
+            setprodectDetails(response.data)
+        }
+        )
+            .catch((error) => console.error("Error fetching data:", error));
+    }, []
     )
-      .catch((error) => console.error("Error fetching data:", error));
 
-  }, []
-  )
+    //Call back for to setting the selecting count in the model
+    const getSelectedProdect = (prodects) => {
+        useEffect(() => {
+            setSelectedProdects(prodects);
+            setCountID(
+                prodects.map((item) => ({ id: item.id, selectedCount: count }))
+            );
+        }, [prodects, count]);
+    }
 
-  // const categoryFilter = (checkedCategories) => {
-  //   if (checkedCategories && checkedCategories.length > 0) {
-  //     const filtered = productDetails.filter((product) =>
-  //       checkedCategories.some((category) => category.isChecked && product.title === category.value)
-  //     );
-  //     //Here is the issue
-  //     setFilteredCategory(filtered.length > 0 ? filtered : productDetails);
-  //   } else {
-  //     setFilteredCategory(productDetails);
-  //   }
-  // };  
 
-  //filterFunction={categoryFilter}
+    //Callback for the selected category
 
-  return (
-    <>
-      <div>
-        <NavigationBar onClick={addModelPopup}/>
-        <AppContext.Provider value={{ productDetails, setprodectDetails, filteredCategory, setFilteredCategory }}>
-          <div className='filter-con w-full flex'>
-            <Filters/>
-            <div className="container">
-              <ProductList />
+    const fetchTheSelectedCategory = (object)=>{
+        setFilteredData(
+            productDetails.filter((value) => 
+                object.some((filterValue) => value.name === filterValue.name)
+            )
+        );
+    }
+
+    useEffect(()=>{
+        console.log(filteredData)
+
+    }, [])
+
+    return (
+        <>
+            <div>
+                <NavigationBar selectedProdectCount={(selectedProdects.length)} onClick={addModelPopup} />
+                <AppContext.Provider value={{ productDetails, setprodectDetails, filteredCategory, setFilteredCategory }}>
+                    <div className='filter-con w-full flex'>
+                        <Filters filerfun={fetchTheSelectedCategory}/>
+                        <div className="container">
+                            <ProductList selectedProdect={getSelectedProdect} />
+                        </div>
+                    </div>
+                </AppContext.Provider>
+                <AddToCardModel selectedProdectCount={countID} selectedProdect={selectedProdects} onClick={addModelPopup} className={addToCardPopup} />
             </div>
-          </div>
-        </AppContext.Provider>
-        <AddToCardModel className={addToCardPopup}/>
-      </div>
-    </>
-  )
+        </>
+    )
 }
 
 export default App

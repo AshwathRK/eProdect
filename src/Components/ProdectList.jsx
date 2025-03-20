@@ -1,10 +1,11 @@
 import { useState, useContext } from "react";
 import {AppContext} from "../App"
 
-const ProductList = () => {
+const ProductList = (probs) => {
 
     const {productDetails} = useContext(AppContext)
 
+    
     const [card, setCard] = useState([])
     const [disabledButtons, setDisabledButtons] = useState({}); 
     const addToCard = (key) => {
@@ -15,7 +16,7 @@ const ProductList = () => {
         }));
     }
 
-    console.log(card)
+    probs.selectedProdect(card)
 
     return (
         <div className="subDivs">

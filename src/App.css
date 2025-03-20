@@ -180,6 +180,18 @@ body {
     .addToCardButton:hover {
         opacity: 0.8;
     }
+
+    .selectedProCount {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        left: 93.5vw;
+        top: 0.6vw;
+    }
 }
 
 
@@ -326,64 +338,155 @@ body {
                     height: auto;
                 }
             }
+
             .prodectInfo {
-                width:55%;
+                width: 55%;
                 max-height: 100%;
-                .Cat-C{
-                    .Cat-h, .Cat-t{
+
+                .Cat-C {
+
+                    .Cat-h,
+                    .Cat-t {
                         color: #616161;
                         font-size: 0.8vw;
                     }
                 }
-                .prodDesc{
+
+                .prodDesc {
                     font-size: 0.8vw;
                     color: #616161;
                 }
-                .ratting{
+
+                .ratting {
                     width: 18vw;
-                    .ratingStar{
+
+                    .ratingStar {
                         width: 3vw;
                         padding: 0 3px;
                         border-radius: 4px;
                         height: 1.5vw;
-                        .imgStar{
+
+                        .imgStar {
                             width: 1vw;
                             height: 1vw;
                         }
-                        .ratingTest{
+
+                        .ratingTest {
                             color: white;
                         }
                     }
-                    .reviewCount{
 
-                    }
                 }
             }
-            .purchessDetails{
-                width:15% ;
+
+            .purchessDetails {
+                width: 15%;
             }
         }
     }
 
 }
 
-.modelPopup-down{
-    width: 800px;
-    height: 600px;
-    background-color: rgb(0, 255, 234);
-    z-index: 22;
+.modelPopup-down {
     display: none;
-    position: absolute;
-    left: 26vw;
-    top: 10vw;
 }
-.modelPopup-open{
-    width: 800px;
-    height: 600px;
-    background-color: rgb(0, 255, 234);
+
+.modelPopup-open {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(211, 231, 255);
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
     z-index: 22;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    left: 26vw;
-    top: 10vw;
+}
+
+.addToCardPopup {
+    width: 50%;
+    height: 70%;
+    z-index: 23;
+    background-color: rgb(7, 54, 96);
+
+    .atcHedders {
+        width: 100%;
+        height: 10%;
+    }
+
+    .atcProdectContent {
+        width: 100%;
+        height: 90%;
+        background-color: rgb(81, 117, 148);
+        
+        .prodList {
+            width: 100%;
+            height: 80%;
+            overflow: hidden;
+            overflow-y: auto;
+            .prodect{
+                width: 100%;
+                height: 10vw;
+                border-radius: 10px;
+                border: 1px solid #616161;
+                background-color: rgb(211, 226, 241);
+                .images{
+                    z-index: 25;
+                }
+                .imageDiv{
+                    width: 30%;
+                    height: 100%;
+                    background-color: #ffffff;
+                    border-top-left-radius: 10px;
+                    border-bottom-left-radius: 10px;
+                    box-sizing: border-box;
+                    .images{
+                        width: 60%;
+                        height: auto;
+                    }
+                }
+
+                .prodDetails{
+                    .atcCatagury{
+                        font-size: 0.9vw;
+                        padding-left: 15px;
+                        color:#616161;
+                    }
+                    .atcTitle{
+                        font-size: 1.2vw;
+                        padding-left: 15px;
+                    }
+
+                    .prodectCount{
+                        width: 70px;
+                        margin: 15px;
+                        background-color: #616161;
+                        justify-content: space-between;
+                        border-radius: 5px;
+                        
+                        .countDecress, .countIncress{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 100%;
+                            width: 33.33%;
+                        }
+                        .countDecress{
+                            border-top-left-radius: 5px;
+                            border-bottom-left-radius: 5px;
+                        }
+                        .countIncress{
+                            border-top-right-radius: 5px;
+                            border-bottom-right-radius: 5px;
+                        }
+                        .countDecress:hover, .countIncress:hover{
+                            opacity: 0.8;
+                            background-color:#9d9b9b ;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

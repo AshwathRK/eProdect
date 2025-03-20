@@ -3,7 +3,7 @@ import MainFilterComponent from "./FilterComponents/MainFilterComponent";
 import  {AppContext}  from "../App";
 
 
-function Filters() {
+function Filters(props) {
     const [drag, setDrag] = useState("fill-down");
     const [data, setData] = useState([])
     const [responceCategory, setResponceCategory] = useState([])
@@ -13,11 +13,6 @@ function Filters() {
     function dragFunction() {
         setDrag((prevDrag) => (prevDrag === "fill-down" ? "fill-up" : "fill-down"));
     }
-
-    // useEffect(() => {
-    //     const uniqueValues = [...new Set(productDetails.map(value => (value.category)))]
-    //     setData(uniqueValues)
-    // }, [productDetails])
 
     useEffect(() => {
         if (Array.isArray(productDetails) && productDetails.length > 0) {
@@ -41,7 +36,7 @@ function Filters() {
             }
         });}
 
-    // probs.filterFunction(responceCategory)
+        props.filerfun(responceCategory)
 
     return (
         <div className="filterbar">
